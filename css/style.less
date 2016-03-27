@@ -20,7 +20,7 @@
    -o-animation: @arguments;
 }
 //定义过渡
-.transition (@prop: all, @time: 0.5s, @ease: linear) {
+.transition (@prop: all, @time: 0.3s, @ease: linear) {
     -webkit-transition: @prop @time @ease;
     -moz-transition: @prop @time @ease;
     -o-transition: @prop @time @ease;
@@ -67,21 +67,22 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
 
 //logo
 @logo-img-width: 200px;
-@logo-position-top: 320px;
+//@logo-position-top: 320px;
 .logo {
     .middle-center;
-    top: @logo-position-top;
+    top: 40%;
+    //top: @logo-position-top;
     width: 50%;
     margin: 0 auto;
     text-align: center;
-    .transition(all,1.5s,ease-in-out);
+    .transition(all,0.8s,ease-in-out);
     .logo-img {
         position: relative;
         display: block;
         width: @logo-img-width;
         height: @logo-img-width;
         margin: 0 auto;
-        .transition(all,1.5s,ease-in-out);
+        .transition(all,0.8s,ease-in-out);
     }
     .logo-font {
         position: relative;
@@ -99,12 +100,13 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
 }
 
 //欢迎按钮
-@welcome-circle-top: 620px;
+//@welcome-circle-top: 620px;
 @welcome-circle-width: 80px;
 @small-circle-width: 20px;
 .welcome-circle {
     .middle-center;
-    top: @welcome-circle-top;
+    top: 75%;
+    //top: @welcome-circle-top;
     width: @welcome-circle-width;
     height: @welcome-circle-width;
     border: #fff solid 2px;
@@ -112,9 +114,9 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
     cursor: pointer;
     .border-radius(@welcome-circle-width);
     .animation(ripple,1s,linear,0s,infinite,normal);
-    .transition(all,1.5s,ease-in-out);
+    .transition(all,1s,ease-in-out);
     & img {
-        .transition(all,0.8s,ease);
+        .transition(all,0.5s,ease);
         opacity: 0;
         .middle-center;
         .scale-transform(0.1,0.1);
@@ -178,7 +180,7 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
     height: 100px;
     background: url("../img/line.png") 50% 50% repeat-x;
     opacity: 0;
-    .transition(all,1s,linear);
+    .transition(all,0.5s,linear);
     & .nav-item {
         position: relative;
         width: 100px;
@@ -267,7 +269,7 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
 .introduction {
     position: absolute;
     left: 200px;
-    top: 400px;
+    top: 50%;
     width: 800px;
     height: 100px;
     padding: 20px;
@@ -333,12 +335,12 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
 .introduction-hide{
     opacity:0;
 }
-.logo-font-navitem{
+.logo-font-change-second{
     opacity:0;
 }
 
-@logo-small-scale: 0.5;
-.logo-contact {
+@logo-small-scale: 0.4;
+.logo-top-left {
     left: 0;
     top: -30px;
     -webkit-transform: rotate(0deg) scale(@logo-small-scale,@logo-small-scale);
@@ -347,6 +349,7 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
     transform: rotate(0deg) scale(@logo-small-scale,@logo-small-scale);
     //上面为重置
     width: 200px;
+    cursor: pointer;
   .transition(all,1s,linear);
 }
 .snow-hide {
@@ -359,6 +362,7 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
 @timeline-item-width: 40px;
 @timeline-big-item-width: 60px;
 @timeline-item-img-width: 300px;
+@timeline-triangle-border: 10px;
 .timeline {
     position: absolute;
     top: 200px;
@@ -376,12 +380,30 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
         height: @timeline-small-circle-width;
         .border-radius(@timeline-small-circle-width);
         background-color: #ae956b;
+        cursor: pointer;
     }
-
     & .timeline-end {
         right: 0;
     }
 
+    & .timeline-front:hover {
+        width: 0;
+        height: 0;
+        background-color: transparent;
+        border-top: @timeline-triangle-border solid transparent;
+        border-bottom: @timeline-triangle-border solid transparent;
+        border-right: @timeline-triangle-border*2 solid #ae956b;
+        .border-radius(0px);
+    }
+    & .timeline-end:hover {
+        width: 0;
+        height: 0;
+        background-color: transparent;
+        border-top: @timeline-triangle-border solid transparent;
+        border-bottom: @timeline-triangle-border solid transparent;
+        border-left: @timeline-triangle-border*2 solid #ae956b;
+        .border-radius(0px);
+    }
     & .timeline-item {
         position: relative;
         top: @timeline-height/2-@timeline-item-width/2;
@@ -423,6 +445,20 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
             opacity: 0;
             .transition();
         }
+        & .timeline-item-2016 {
+            position: absolute;
+            top: -25px;
+            left: -1px;
+            opacity: 0;
+        }
+        & .timeline-item-p {
+        }
+        & .timeline-item-p-detail {
+            position: absolute;
+            top: 0;
+            left: 8px;
+            opacity: 0;
+        }
     }
     & .timeline-item:hover {
         top: @timeline-height/2-@timeline-big-item-width/2;
@@ -444,9 +480,137 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,tab
         height: @timeline-item-img-width;
         opacity: 1;
     }
+    & .timeline-item:hover > .timeline-item-2016 {
+        opacity: 1;
+    }
 }
 //时间线出现
 .timeline-change {
     left: 200px;
+    opacity: 1;
+}
+
+//联系我们
+@contact-line-width: 500px;
+@contact-circle-width: 80px;
+@contact-line-small-circle: 30px;
+@contact-line-big-circle: 34px;
+@contact-triangle-border: 6px;
+.contact {
+    position: absolute;
+    top: 200px;
+    left: -500px;
+    width: 630px;
+    height: 600px;
+    opacity: 0;
+    .transition(all,1s,ease-in-out);
+    & .contact-item {
+        position: relative;
+        margin-top: 20px;
+        & .contact-line {
+            width: @contact-line-width;
+            height: @contact-circle-width;
+            background: url("../img/timeline-line.png") 50% 50% repeat-x;
+            & .contact-line-small-circle {
+                position: absolute;
+                top: @contact-circle-width*0.5-0.5*@contact-line-small-circle;
+                left: 2.5px;
+                width: @contact-line-small-circle;
+                height: @contact-line-small-circle;
+                .border-radius(@contact-line-small-circle);
+                background: #ae956b;
+            }
+            & .contact-line-big-circle {
+                position: absolute;
+                top: (@contact-circle-width*1-1*@contact-line-big-circle*1-2)/2;
+                width: @contact-line-big-circle;
+                height: @contact-line-big-circle;
+                .border-radius(@contact-line-big-circle);
+                border: 1px solid #ae956b;
+                }
+        }
+        & .contact-circle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: @contact-circle-width;
+            height: @contact-circle-width;
+            .border-radius(@contact-circle-width);
+            border: 1px solid #ae956b;
+        }
+        & .contact-line-triangle {
+            position: absolute;
+            left: @contact-line-width;
+            top: @contact-circle-width/2-@contact-triangle-border;
+            width: 0;
+            height: 0;
+            border-top: @contact-triangle-border solid transparent;
+            border-bottom: @contact-triangle-border solid transparent;
+            border-right: @contact-triangle-border*2 solid #ae956b;
+        }
+    }
+}
+.contact-change {
+    left: 200px;
+    opacity: 1;
+}
+.contact-right {
+    position: absolute;
+    top: 200px;
+    left: -500px;
+    width: 630px;
+    height: 600px;
+    opacity: 0;
+    .transition(all,1s,ease-in-out);
+    & .contact-item {
+        position: relative;
+        margin-top: 20px;
+        & .contact-line {
+            width: @contact-line-width;
+            height: @contact-circle-width;
+            margin-left: 100px;
+            background: url("../img/timeline-line.png") 50% 50% repeat-x;
+            & .contact-line-small-circle {
+                position: absolute;
+                top: @contact-circle-width*0.5-0.5*@contact-line-small-circle;
+                right: 3px;
+                width: @contact-line-small-circle;
+                height: @contact-line-small-circle;
+                .border-radius(@contact-line-small-circle);
+                background: #ae956b;
+            }
+            & .contact-line-big-circle {
+                position: absolute;
+                top: (@contact-circle-width*1-1*@contact-line-big-circle*1-2)/2;
+                right: 0;
+                width: @contact-line-big-circle;
+                height: @contact-line-big-circle;
+                .border-radius(@contact-line-big-circle);
+                border: 1px solid #ae956b;
+                }
+        }
+        & .contact-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: @contact-circle-width;
+            height: @contact-circle-width;
+            .border-radius(@contact-circle-width);
+            border: 1px solid #ae956b;
+        }
+        & .contact-line-triangle {
+            position: absolute;
+            left: 100px;
+            top: @contact-circle-width/2-@contact-triangle-border;
+            width: 0;
+            height: 0;
+            border-top: @contact-triangle-border solid transparent;
+            border-bottom: @contact-triangle-border solid transparent;
+            border-left: @contact-triangle-border*2 solid #ae956b;
+        }
+    }
+}
+.contact-right-change {
+    left: 900px;
     opacity: 1;
 }

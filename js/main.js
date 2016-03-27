@@ -38,27 +38,56 @@ $(function(){
     菜单导航点击效果
      */
     $(".nav-timeline").click(function(){
-        $(".logo-font").addClass(" logo-font-navitem");
-        $(".logo").addClass(" logo-contact");
+        $(".logo-font").addClass("logo-font-change-second");
+        $(".logo").addClass(" logo-top-left");
         $(".introduction").addClass(" introduction-hide");
         $(this).find("img").addClass("nav-under-line-show")
         $(this).siblings().find(".nav-hover").removeClass("nav-under-line-show");
         $(".timeline").addClass("timeline-change");
+        $(".contact").removeClass("contact-change");
+        $(".contact-right").removeClass("contact-right-change");
     });
     $(".nav-contact").click(function(){
-        $(".logo-font").addClass(" logo-font-navitem");
-        $(".logo").addClass(" logo-contact");
+        $(".logo-font").addClass("logo-font-change-second");
+        $(".logo").addClass(" logo-top-left");
         $(".introduction").addClass(" introduction-hide");
         $(this).find("img").addClass("nav-under-line-show")
         $(this).siblings().find(".nav-hover").removeClass("nav-under-line-show");
         $(".timeline").removeClass("timeline-change");
+        $(".contact").addClass("contact-change");
+        $(".contact-right").addClass("contact-right-change");
     });
     $(".nav-index").click(function(){
-        $(".logo-font").removeClass(" logo-font-navitem");
-        $(".logo").removeClass(" logo-contact");
+        $(".logo-font").removeClass("logo-font-change-second");
+        $(".logo").removeClass(" logo-top-left");
         $(".introduction").removeClass(" introduction-hide");
         $(this).find("img").addClass("nav-under-line-show")
         $(this).siblings().find(".nav-hover").removeClass("nav-under-line-show");
         $(".timeline").removeClass("timeline-change");
+        $(".contact").removeClass("contact-change");
+        $(".contact-right").removeClass("contact-right-change");
     });
+    /*
+    logo点击效果
+     */
+    $("#container").on("click",".logo-top-left",function(){
+        $(".logo-font").removeClass("logo-font-change-second");
+        $(".logo").removeClass(" logo-top-left");
+        $(".introduction").removeClass(" introduction-hide");
+        $(".nav-index").find("img").addClass("nav-under-line-show")
+        $(".nav-index").siblings().find(".nav-hover").removeClass("nav-under-line-show");
+        $(".timeline").removeClass("timeline-change");
+        $(".contact").removeClass("contact-change");
+        $(".contact-right").removeClass("contact-right-change");
+    });
+    /*
+    timeline-item的hover效果
+     */
+     $(".timeline-item").hover(function(){
+        $(this).find(".timeline-item-p").css("opacity",0);
+        $(this).find(".timeline-item-p-detail").css("opacity",1);
+     },function(){
+        $(this).find(".timeline-item-p").css("opacity",1);
+        $(this).find(".timeline-item-p-detail").css("opacity",0);
+     });
 });
